@@ -90,59 +90,72 @@ Instead, FAISS is stored using the official and safe approach:
 ```python
 vectorstore.save_local("faiss_index")
 FAISS.load_local("faiss_index", embeddings)
+ ```
 
 
-🧪 Tech Stack
+## 🧪 Tech Stack
 
-Python 3.11
+- Python 3.11  
+- Streamlit  
+- LangChain 1.x  
+- OpenAI API  
+- FAISS  
+- Unstructured  
 
-Streamlit
+---
 
-LangChain 1.x
+## 🛠️ Installation (Local Setup)
 
-OpenAI API
-
-FAISS
-
-Unstructured
-
-🛠️ Installation (Local Setup)
-1️⃣ Clone the repository
+### 1️⃣ Clone the repository
+```bash
 git clone https://github.com/Anshuman776/langchain.git
 cd langchain/News_research_tool_project
+````
 
-2️⃣ Create a virtual environment
+### 2️⃣ Create a virtual environment
+```bash
 conda create -n langchain311 python=3.11
 conda activate langchain311
+```
 
-3️⃣ Install dependencies
+### 3️⃣ Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
-4️⃣ Set environment variables
-
-Create a .env file:
-
+### 4️⃣ Set environment variables
+Create a .env file
+```bash
 OPENAI_API_KEY=your_api_key_here
+```
+Ensure the following exists in main.py:
+```bash
+from dotenv import load_dotenv
+load_dotenv()
+```
 
-5️⃣ Run the app
+### 5️⃣ Run the app
+```bash
 streamlit run main.py
+```
 
-📖 How to Use
+### 📖 How to Use
 
-Open the app
+1. Open the app
 
-Enter up to 3 news article URLs
-https://www.moneycontrol.com/news/business/stocks/buy-tata-motors-target-of-rs-743-kr-choksey-11080811.html ,
+2. Enter up to 3 news article URLs, for example:
 
-https://www.moneycontrol.com/news/business/tata-motors-launches-punch-icng-price-starts-at-rs-7-1-lakh-11098751.html ,
+https://www.moneycontrol.com/news/business/stocks/buy-tata-motors-target-of-rs-743-kr-     choksey-11080811.html
 
-https://www.moneycontrol.com/news/business/tata-motors-mahindra-gain-certificates-for-production-linked-payouts-11281691.html .
+https://www.moneycontrol.com/news/business/tata-motors-launches-punch-icng-price-starts-at-rs-7-1-lakh-11098751.html
 
-Ask a question related to the articles
+https://www.moneycontrol.com/news/business/tata-motors-mahindra-gain-certificates-for-production-linked-payouts-11281691.html
 
-View the answer and sources
+3. Ask a question related to the articles
 
-🧠 Example Questions
+4. View the answer and sources
+
+### 🧠 Example Questions
 
 “What is the price of Tata Punch”
 
@@ -150,7 +163,7 @@ View the answer and sources
 
 “What are the risks mentioned?”
 
-📌 Important Note
+### 📌 Important Note
 
 If you ask a question that is not answered in the articles, the app will respond with:
 
@@ -158,7 +171,7 @@ If you ask a question that is not answered in the articles, the app will respond
 
 This is intentional and ensures factual accuracy.
 
-🚀 Future Improvements
+### 🚀 Future Improvements
 
 Streaming responses
 
@@ -170,15 +183,7 @@ Hybrid search (BM25 + vectors)
 
 Document preview UI
 
-NOTE : when your are running this repo on local host please create a .env where you have to create a open ai api key in this and add this 
-
-from dotenv import load_dotenv
-
-load_dotenv()
-
-it will work fine 
-
-👨‍💻 Author
+### 👨‍💻 Author
 
 Built by Anshuman Maurya
 
