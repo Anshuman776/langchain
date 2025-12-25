@@ -107,8 +107,8 @@ Unstructured
 
 🛠️ Installation (Local Setup)
 1️⃣ Clone the repository
-git clone https://github.com/Anshuman776/news-research-tool.git
-cd rockybot-news-research-tool
+git clone https://github.com/Anshuman776/langchain.git
+cd langchain/News_research_tool_project
 
 2️⃣ Create a virtual environment
 conda create -n langchain311 python=3.11
@@ -166,6 +166,11 @@ Citation numbering
 Hybrid search (BM25 + vectors)
 
 Document preview UI
+
+NOTE : when your are running this repo on local host please create a .env where you have to create a open ai api key in this and add this 
+from dotenv import load_dotenv
+load_dotenv() 
+it will work fine 
 
 👨‍💻 Author
 
