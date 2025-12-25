@@ -6,7 +6,7 @@ https://newsresearchtoolproject-mhpp2obhmmxfhuhn5qsj9a.streamlit.app/
 📌 Overview<img width="1920" height="1080" alt="Screenshot 2025-12-25 171223" src="https://github.com/user-attachments/assets/6040da8d-1863-4b95-a155-96b8daebe9eb" />
 
 
-RockyBot is a Retrieval-Augmented Generation (RAG) application that allows users to:
+Bot is a Retrieval-Augmented Generation (RAG) application that allows users to:
 
 Input news article URLs
 
@@ -35,7 +35,7 @@ More accurate
 
 Suitable for research and analysis
 
-🔍 How RockyBot Works
+🔍 How Bot Works
 
 URL Ingestion
 News article URLs are loaded using UnstructuredURLLoader.
@@ -107,7 +107,7 @@ Unstructured
 
 🛠️ Installation (Local Setup)
 1️⃣ Clone the repository
-git clone https://github.com/your-username/rockybot-news-research-tool.git
+git clone https://github.com/Anshuman776/news-research-tool.git
 cd rockybot-news-research-tool
 
 2️⃣ Create a virtual environment
@@ -131,8 +131,9 @@ streamlit run main.py
 Open the app
 
 Enter up to 3 news article URLs
-
-Click Process URLs
+https://www.moneycontrol.com/news/business/stocks/buy-tata-motors-target-of-rs-743-kr-choksey-11080811.html
+https://www.moneycontrol.com/news/business/tata-motors-launches-punch-icng-price-starts-at-rs-7-1-lakh-11098751.html
+https://www.moneycontrol.com/news/business/tata-motors-mahindra-gain-certificates-for-production-linked-payouts-11281691.html
 
 Ask a question related to the articles
 
@@ -140,7 +141,7 @@ View the answer and sources
 
 🧠 Example Questions
 
-“What is the main topic of these articles?”
+“What is the price of Tata Punch”
 
 “Summarize the key developments.”
 
