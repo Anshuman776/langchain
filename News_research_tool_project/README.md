@@ -1,95 +1,96 @@
-📰 News Research Tool (RAG Application)
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Streamlit](https://img.shields.io/badge/Built%20with-Streamlit-red)
 
-🔗 Live App:
+# 📰 News Research Tool (RAG Application)
+
+🔗 **Live App:**  
 https://newsresearchtoolproject-mhpp2obhmmxfhuhn5qsj9a.streamlit.app/
 
-📌 Overview<img width="1920" height="1080" alt="Screenshot 2025-12-25 171223" src="https://github.com/user-attachments/assets/6040da8d-1863-4b95-a155-96b8daebe9eb" />
+---
 
+## 📌 Overview
 
-Bot is a Retrieval-Augmented Generation (RAG) application that allows users to:
+<img width="100%" alt="Application Screenshot" src="https://github.com/user-attachments/assets/6040da8d-1863-4b95-a155-96b8daebe9eb" />
 
-Input news article URLs
+**News Research Tool** is a **Retrieval-Augmented Generation (RAG)** application that allows users to:
 
-Automatically extract and process article content
+- Input news article URLs  
+- Automatically extract and process article content  
+- Ask questions **strictly based on those articles**  
+- Receive **grounded answers with sources**
 
-Ask questions strictly based on those articles
-
-Receive grounded answers with sources
-
-Unlike a normal chatbot, RockyBot does not hallucinate or answer from general knowledge.
+Unlike a normal chatbot, this application **does not hallucinate** or answer from general knowledge.  
 If the information is not present in the articles, it clearly says so.
 
-🧠 What is RAG?
+---
 
-RAG (Retrieval-Augmented Generation) combines:
+## 🧠 What is RAG?
 
-Retrieval – Fetch relevant information from your own data
+**RAG (Retrieval-Augmented Generation)** combines:
 
-Generation – Use an LLM to generate answers based only on that data
+- **Retrieval** – Fetch relevant information from your own data  
+- **Generation** – Use an LLM to generate answers based only on that data  
 
 This makes the system:
 
-Safer
+- Safer  
+- More accurate  
+- Suitable for research and analysis  
 
-More accurate
+---
 
-Suitable for research and analysis
+## 🔍 How the Application Works
 
-🔍 How Bot Works
+1. **URL Ingestion**  
+   News article URLs are loaded using `UnstructuredURLLoader`.
 
-URL Ingestion
-News article URLs are loaded using UnstructuredURLLoader.
+2. **Text Chunking**  
+   Articles are split into smaller chunks using `RecursiveCharacterTextSplitter`.
 
-Text Chunking
-Articles are split into smaller chunks using RecursiveCharacterTextSplitter.
+3. **Embedding Generation**  
+   Each chunk is converted into vector embeddings using OpenAI embeddings.
 
-Embedding Generation
-Each chunk is converted into vector embeddings using OpenAI embeddings.
+4. **Vector Storage (FAISS)**  
+   Embeddings are stored in a FAISS vector index for fast similarity search.
 
-Vector Storage (FAISS)
-Embeddings are stored in a FAISS vector index for fast similarity search.
+5. **Retrieval**  
+   When a user asks a question, the most relevant chunks are retrieved.
 
-Retrieval
-When a user asks a question, the most relevant chunks are retrieved.
+6. **Answer Generation**  
+   The LLM generates an answer **only using the retrieved context**.
 
-Answer Generation
-The LLM generates an answer only using the retrieved context.
+7. **Source Display**  
+   The app shows which articles were used to generate the answer.
 
-Source Display
-The app shows which articles were used to generate the answer.
+---
 
-✨ Key Features
+## ✨ Key Features
 
-✅ Context-grounded answers (no hallucination)
+- Context-grounded answers (no hallucination)  
+- Source citations  
+- Modern LangChain (LCEL / Runnable pipeline)  
+- FAISS vector search  
+- Streamlit UI  
+- Cloud deployment  
 
-✅ Source citations
+---
 
-✅ Modern LangChain (LCEL / Runnable pipeline)
+## 🚫 Why Pickle Is NOT Used
 
-✅ FAISS vector search
+Earlier versions of LangChain used `pickle` to store vector databases.  
+This project **does not use pickle** because:
 
-✅ Streamlit UI
+- FAISS objects contain thread locks and C++ components  
+- Pickle cannot safely serialize these objects  
+- It leads to runtime errors  
 
-✅ Cloud-deployed
+Instead, FAISS is stored using the official and safe approach:
 
-🚫 Why Pickle Is NOT Used
-
-Earlier versions of LangChain used pickle to store vector databases.
-This project does not use pickle because:
-
-FAISS objects contain thread locks and C++ components
-
-Pickle cannot safely serialize these objects
-
-It leads to runtime errors
-
-Instead, FAISS is stored using:
-
+```python
 vectorstore.save_local("faiss_index")
 FAISS.load_local("faiss_index", embeddings)
 
-
-This is the official and safe approach.
 
 🧪 Tech Stack
 
