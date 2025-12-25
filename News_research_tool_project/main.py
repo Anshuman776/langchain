@@ -1,7 +1,7 @@
 import os
 import time
 import streamlit as st
-from dotenv import load_dotenv
+
 
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -12,10 +12,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 
-# ---------------------------------------------------
-# ENV SETUP
-# ---------------------------------------------------
-load_dotenv()  # Requires OPENAI_API_KEY in .env
+
 
 # ---------------------------------------------------
 # STREAMLIT UI
@@ -133,4 +130,5 @@ if query:
             st.subheader("Sources")
             for src in sources:
                 st.write(src)
+
 
