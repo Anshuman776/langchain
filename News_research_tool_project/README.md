@@ -183,6 +183,7 @@ Built by Anshuman Maurya
 
 Learning and experimenting with RAG, LangChain, and LLM applications
 
-📜 License
+## 📜 License
 
-MIT License
+This project is licensed under the **MIT License**.
+
