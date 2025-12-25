@@ -132,7 +132,9 @@ Open the app
 
 Enter up to 3 news article URLs
 https://www.moneycontrol.com/news/business/stocks/buy-tata-motors-target-of-rs-743-kr-choksey-11080811.html ,
+
 https://www.moneycontrol.com/news/business/tata-motors-launches-punch-icng-price-starts-at-rs-7-1-lakh-11098751.html ,
+
 https://www.moneycontrol.com/news/business/tata-motors-mahindra-gain-certificates-for-production-linked-payouts-11281691.html .
 
 Ask a question related to the articles
@@ -168,13 +170,17 @@ Hybrid search (BM25 + vectors)
 Document preview UI
 
 NOTE : when your are running this repo on local host please create a .env where you have to create a open ai api key in this and add this 
+
 from dotenv import load_dotenv
-load_dotenv() 
+
+load_dotenv()
+
 it will work fine 
 
 👨‍💻 Author
 
 Built by Anshuman Maurya
+
 Learning and experimenting with RAG, LangChain, and LLM applications
 
 📜 License
