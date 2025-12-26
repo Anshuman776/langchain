@@ -6,7 +6,11 @@ from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_community.utilities import SQLDatabase
 from langchain_experimental.sql import SQLDatabaseChain
 from langchain_community.vectorstores import Chroma
-from langchain_core.prompts import PromptTemplate
+
+from langchain_core.prompts import PromptTemplate, FewShotPromptTemplate
+from langchain_core.example_selectors import SemanticSimilarityExampleSelector
+
+from few_shots import few_shots
 
 load_dotenv()
 
@@ -31,30 +35,30 @@ def get_few_shot_db_chain():
         openai_api_key=os.environ["OPENAI_API_KEY"]
     )
 
-    # ---------- OPENAI EMBEDDINGS ----------
+    # ---------- EMBEDDINGS ----------
     embeddings = OpenAIEmbeddings(
         model="text-embedding-3-small",
         openai_api_key=os.environ["OPENAI_API_KEY"]
     )
 
-    # Example texts for semantic understanding (optional but useful)
-    texts = [
-        "How many Nike t-shirts are left",
-        "Total stock of Levi t-shirts",
-        "Which brand has the most t-shirts",
-        "List t-shirts with discount",
-    ]
+    texts = [" ".join(example.values()) for example in few_shots]
 
     vectorstore = Chroma.from_texts(
         texts=texts,
-        embedding=embeddings
+        embedding=embeddings,
+        metadatas=few_shots
+    )
+
+    example_selector = SemanticSimilarityExampleSelector(
+        vectorstore=vectorstore,
+        k=2
     )
 
     # ---------- PROMPT ----------
     mysql_prompt = """
 You are a MySQL expert.
 
-Generate a valid MySQL query, execute it, and return the answer.
+Generate a valid SQL query, execute it, and answer in plain English.
 
 Format:
 Question:
@@ -77,16 +81,22 @@ Answer: {Answer}
         example_selector=example_selector,
         example_prompt=example_prompt,
         prefix=mysql_prompt,
-        suffix=PROMPT_SUFFIX,
-        input_variables=["input", "table_info", "top_k"]
-    )
+        suffix="""
+Question: {input}
+Tables:
+{table_info}
 
+SQLQuery:
+""",
+        input_variables=["input", "table_info"]
+    )
 
     chain = SQLDatabaseChain.from_llm(
         llm=llm,
         db=db,
-        prompt=prompt,
-        verbose=True
+        prompt=few_shot_prompt,
+        verbose=True,
+        return_direct=False
     )
 
     return chain
