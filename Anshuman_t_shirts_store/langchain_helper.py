@@ -51,25 +51,35 @@ def get_few_shot_db_chain():
     )
 
     # ---------- PROMPT ----------
-     prompt = PromptTemplate(
-    input_variables=["input", "table_info", "top_k"],
-    template="""
+    mysql_prompt = """
 You are a MySQL expert.
 
-Steps:
-1. Write a correct MySQL query
-2. Execute the query
-3. Use the SQL result to answer in plain English
+Generate a valid MySQL query, execute it, and return the answer.
 
+Format:
 Question:
-{input}
-
-Database tables:
-{table_info}
-
 SQLQuery:
+SQLResult:
+Answer:
 """
-)
+
+    example_prompt = PromptTemplate(
+        input_variables=["Question", "SQLQuery", "SQLResult", "Answer"],
+        template="""
+Question: {Question}
+SQLQuery: {SQLQuery}
+SQLResult: {SQLResult}
+Answer: {Answer}
+"""
+    )
+
+    few_shot_prompt = FewShotPromptTemplate(
+        example_selector=example_selector,
+        example_prompt=example_prompt,
+        prefix=mysql_prompt,
+        suffix=PROMPT_SUFFIX,
+        input_variables=["input", "table_info", "top_k"]
+    )
 
 
     chain = SQLDatabaseChain.from_llm(
@@ -80,6 +90,7 @@ SQLQuery:
     )
 
     return chain
+
 
 
 
