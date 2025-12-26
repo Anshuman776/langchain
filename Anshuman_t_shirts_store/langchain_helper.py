@@ -51,13 +51,15 @@ def get_few_shot_db_chain():
     )
 
     # ---------- PROMPT ----------
-    prompt = PromptTemplate(
-        input_variables=["input", "table_info", "top_k"],
-        template="""
+     prompt = PromptTemplate(
+    input_variables=["input", "table_info", "top_k"],
+    template="""
 You are a MySQL expert.
 
-Use the database schema below to write a correct MySQL query,
-execute it, and return the final answer.
+Steps:
+1. Write a correct MySQL query
+2. Execute the query
+3. Use the SQL result to answer in plain English
 
 Question:
 {input}
@@ -67,7 +69,8 @@ Database tables:
 
 SQLQuery:
 """
-    )
+)
+
 
     chain = SQLDatabaseChain.from_llm(
         llm=llm,
@@ -77,5 +80,6 @@ SQLQuery:
     )
 
     return chain
+
 
 
