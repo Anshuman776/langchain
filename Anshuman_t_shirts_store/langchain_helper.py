@@ -34,7 +34,7 @@ def get_few_shot_db_chain():
     db_name = os.environ["DB_NAME"]
 
     db = SQLDatabase.from_uri(
-        f"mysql+pymysql://{db_user}:{db_password}@{db_host}/{db_name}",
+        f"mysql+pymysql://{db_user}:{db_password}@{db_host}:{os.environ['DB_PORT']}/{db_name}",
         sample_rows_in_table_info=3
     )
 
@@ -103,3 +103,4 @@ Answer: {Answer}
     )
 
     return chain
+
