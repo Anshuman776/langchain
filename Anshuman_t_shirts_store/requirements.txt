@@ -1,13 +1,20 @@
-streamlit
-python-dotenv
+python-dotenv==1.0.0
+streamlit==1.22.0
 
-langchain
-langchain-community
-langchain-experimental
-langchain-openai
+langchain==0.0.284
+langchain-experimental==0.0.10
+langchain-community==0.0.9
 
-openai
-chromadb
-pymysql
-mysql-connector-python
+openai==0.27.8
+tiktoken==0.4.0
+
+sentence-transformers==2.2.2
+chromadb==0.4.14
+faiss-cpu==1.7.4
+
+mysql-connector-python==8.0.33
+pymysql==1.1.0
+
+protobuf==3.20.3
+
 
