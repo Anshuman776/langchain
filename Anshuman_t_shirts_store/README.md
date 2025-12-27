@@ -164,6 +164,8 @@ Ask a question about the inventory
 
 View the result instantly
 
+---
+
 ### 🧠 Example Questions
 
 “How many Nike t-shirts are left?”
@@ -172,6 +174,8 @@ View the result instantly
 
 “Which brand has the most inventory?”
 
+---
+
 ### 📌 Important Note
 
 If a question does not match the database schema or available data, the app will respond with:
@@ -179,6 +183,8 @@ If a question does not match the database schema or available data, the app will
 “No data found.”
 
 This ensures accuracy and prevents hallucination.
+
+---
 
 ### 🚀 Future Improvements
 
@@ -192,11 +198,15 @@ Role-based access
 
 Natural language summaries
 
+---
+
 ### 👨‍💻 Author
 
 Built by Anshuman Maurya
 
 Learning and experimenting with SQL-RAG, LangChain, and Streamlit.
+
+---
 
 ## 📜 License
 
