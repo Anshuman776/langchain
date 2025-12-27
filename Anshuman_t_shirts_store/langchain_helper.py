@@ -2,13 +2,15 @@ import os
 from urllib.parse import quote_plus
 from dotenv import load_dotenv
 
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from langchain_community.utilities import SQLDatabase
-from langchain_experimental.sql import SQLDatabaseChain
-from langchain_community.vectorstores import Chroma
 
-from langchain_core.prompts import PromptTemplate, FewShotPromptTemplate
-from langchain_core.example_selectors import SemanticSimilarityExampleSelector
+from langchain.chat_models import ChatOpenAI
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.utilities import SQLDatabase
+from langchain_experimental.sql import SQLDatabaseChain
+from langchain.vectorstores import Chroma
+
+from langchain.prompts import PromptTemplate, FewShotPromptTemplate
+from langchain.prompts.example_selector import SemanticSimilarityExampleSelector
 
 from few_shots import few_shots
 
@@ -30,14 +32,13 @@ def get_few_shot_db_chain():
 
     # ---------- LLM ----------
     llm = ChatOpenAI(
-        model="gpt-3.5-turbo",
+        model_name="gpt-3.5-turbo",
         temperature=0.1,
         openai_api_key=os.environ["OPENAI_API_KEY"]
     )
 
     # ---------- EMBEDDINGS ----------
     embeddings = OpenAIEmbeddings(
-        model="text-embedding-3-small",
         openai_api_key=os.environ["OPENAI_API_KEY"]
     )
 
@@ -100,6 +101,8 @@ SQLQuery:
     )
 
     return chain
+
+
 
 
 
