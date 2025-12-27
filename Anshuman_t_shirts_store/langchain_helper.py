@@ -97,10 +97,11 @@ SQLQuery:
         db=db,
         prompt=few_shot_prompt,
         verbose=True,
-        return_direct=False
+        return_direct=True
     )
 
     return chain
+
 
 
 
