@@ -1,6 +1,7 @@
 import os
 import streamlit as st
-from langchain_openai import ChatOpenAI
+from langchain.chat_models import ChatOpenAI
+
 from langchain_helper import get_few_shot_db_chain
 
 st.title("Anshuman T-Shirts Store 👕")
@@ -35,6 +36,7 @@ Do NOT show SQL.
     # 3️⃣ Show final answer
     st.subheader("Answer")
     st.write(final_answer)
+
 
 
 
