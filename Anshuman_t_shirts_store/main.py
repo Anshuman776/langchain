@@ -9,8 +9,6 @@ question = st.text_input("Ask a question about the database")
 
 if question:
     chain = get_few_shot_db_chain()
-
-    # OLD LangChain way (correct)
     raw_result = chain.run(question)
 
     llm = ChatOpenAI(
@@ -34,10 +32,3 @@ Do NOT show SQL.
 
     st.subheader("Answer")
     st.write(final_answer)
-
-
-
-
-
-
-
