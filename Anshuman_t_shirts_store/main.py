@@ -11,4 +11,4 @@ if question:
     raw_result = chain.run(question)
 
     st.subheader("Answer")
-    st.write(raw_result)
+    st.write(raw_result[0][0])
