@@ -1,7 +1,9 @@
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
 ![Streamlit](https://img.shields.io/badge/Built%20with-Streamlit-red)
 ![Database](https://img.shields.io/badge/Database-MySQL-blue)
+![LangChain](https://img.shields.io/badge/Built%20with-LangChain-green)
+![License](https://img.shields.io/badge/License-MIT-green)
+
 
 # 👕 Anshuman T-Shirts Store (AI-Powered SQL Q&A)
 
